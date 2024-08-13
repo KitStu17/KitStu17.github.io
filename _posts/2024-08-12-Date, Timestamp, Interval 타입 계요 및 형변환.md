@@ -51,3 +51,27 @@ tags: [Postgre, Spring Boot, Mybatis]
     - select to_timestamp('2024-08-12', 'yyyy-mm-dd')::text;
 
 
+### 날짜와 시간 연산 - Interval 연산
+
+- Date 타입에 숫자를 더하거나 빼면 해당하는 일자를 더하거나 빼서 반환
+
+- Timestamp 타입에 숫자를 더하거나 빼면 오류 발생
+    - Timestamp 타입은 Interval을 사용하여 연산
+    - SELECT TO_TIMESTAMP('2024-08-12', 'YYYY-MM-DD') - INTERVAL'3'DAY AS calc_date
+
+- Date 타입에 Interval을 사용하여 연산할 경우, Timestamp 타입으로 반환됨
+    ```sql
+    select to_date('2024-08-12', 'yyyy-mm-dd') - to_date('2024-01-01', 'yyyy-mm-dd') as interval_01
+	, pg_typeof(to_date('2024-08-12', 'yyyy-mm-dd') - to_date('2024-01-01', 'yyyy-mm-dd')) as type ;
+    ```
+
+- Date - Date는 정수형으로, Timestamp - Timestamp는 Interval로 출력됨
+    ```sql
+    select to_timestamp('2024-08-12 19:00:00', 'yyyy-mm-dd hh24:mi:ss') 
+     - to_timestamp('2024-01-01 12:00:00', 'yyyy-mm-dd hh24:mi:ss') as time_01
+     , pg_typeof(to_timestamp('2024-08-12 19:00:00', 'yyyy-mm-dd hh24:mi:ss') 
+     - to_timestamp('2024-01-01 12:00:00', 'yyyy-mm-dd hh24:mi:ss')) as type ;
+    ```
+
+- justify_interval(), age()를 통해 Timestamp - Date 연산도 가능
+    - 단, justify_interval()은 **한 달을 무조건 30일**로 계산

@@ -106,64 +106,65 @@ tags: [Spring Boot]
 1. Custom MapWrapper 구현
     - MapWrapper를 상속받아 키를 camelCase로 변환하는 로직을 추가한다.
         ```java
-            import org.apache.ibatis.reflection.MetaObject;
-            import org.apache.ibatis.reflection.wrapper.MapWrapper;
+        import org.apache.ibatis.reflection.MetaObject;
+        import org.apache.ibatis.reflection.wrapper.MapWrapper;
 
-            import java.util.HashMap;
-            import java.util.Map;
+        import java.util.HashMap;
+        import java.util.Map;
 
-            public class CustomMapWrapper extends MapWrapper {
-                public CustomMapWrapper(MetaObject metaObject, Map<String, Object> map) {
-                    super(metaObject, map);
-                }
+        public class CustomMapWrapper extends MapWrapper {
 
-                @Override
-                public String findProperty(String name, boolean useCamelCaseMapping) {
-                    if (useCamelCaseMapping && name != null) {
-                        StringBuilder result = new StringBuilder();
-                        boolean upperCase = false;
-                        for (int i = 0; i < name.length(); i++) {
-                            char c = name.charAt(i);
-                            if (c == '_') {
-                                upperCase = true;
-                            } else if (upperCase) {
-                                result.append(Character.toUpperCase(c));
-                                upperCase = false;
-                            } else {
-                                result.append(c);
-                            }
-                        }
-                        return result.toString();
-                    }
-                    return name;
-                }
+            public CustomMapWrapper(MetaObject metaObject, Map<String, Object> map) {
+                super(metaObject, map);
             }
+            
+            @Override
+            public String findProperty(String name, boolean useCamelCaseMapping) {
+                if (useCamelCaseMapping && name != null) {
+                    StringBuilder result = new StringBuilder();
+                    boolean upperCase = false;
+                    for (int i = 0; i < name.length(); i++) {
+                        char c = name.charAt(i);
+                        if (c == '_') {
+                            upperCase = true;
+                        } else if (upperCase) {
+                            result.append(Character.toUpperCase(c));
+                            upperCase = false;
+                        } else {
+                            result.append(c);
+                        }
+                    }
+                    return result.toString();
+                }
+                return name;
+            }
+        }
         ```
 
 2. Custom ObjectWrapperFactory 구현
     - MyBatis에서 기본 Wrapper 대신 커스텀 Wrapper를 사용할 수 있도록 설정하기 위한 CustomObjectWrapperFactory을 구현한다.
         ```java
-            import org.apache.ibatis.reflection.MetaObject;
-            import org.apache.ibatis.reflection.factory.ObjectFactory;
-            import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
-            import org.apache.ibatis.reflection.wrapper.ObjectWrapper;
+        import org.apache.ibatis.reflection.MetaObject;
+        import org.apache.ibatis.reflection.factory.ObjectFactory;
+        import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
+        import org.apache.ibatis.reflection.wrapper.ObjectWrapper;
 
-            import java.util.Map;
+        import java.util.Map;
 
-            public class CustomObjectWrapperFactory extends DefaultObjectWrapperFactory {
-                @Override
-                public boolean hasWrapperFor(Object object) {
-                    return object instanceof Map;
-                }
-
-                @Override
-                public ObjectWrapper getWrapperFor(MetaObject metaObject, Object object) {
-                    if (object instanceof Map) {
-                        return new CustomMapWrapper(metaObject, (Map<String, Object>) object);
-                    }
-                    return super.getWrapperFor(metaObject, object);
-                }
+        public class CustomObjectWrapperFactory extends DefaultObjectWrapperFactory {
+            @Override
+            public boolean hasWrapperFor(Object object) {
+                return object instanceof Map;
             }
+
+            @Override
+            public ObjectWrapper getWrapperFor(MetaObject metaObject, Object object) {
+                if (object instanceof Map) {
+                    return new CustomMapWrapper(metaObject, (Map<String, Object>) object);
+                }
+                return super.getWrapperFor(metaObject, object);
+            }
+        }
         ```
 
 3. MyBatis Configuration에 CustomObjectWrapperFactory 등록

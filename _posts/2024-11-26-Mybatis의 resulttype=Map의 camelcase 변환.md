@@ -20,13 +20,15 @@ tags: [Spring Boot]
     <setting name="mapUnderscoreToCamelCase" value="true"/>
     ```
 
-# mapUnderscoreToCamelCase의 한계
+
+## mapUnderscoreToCamelCase의 한계
 
 - 상황에 따라 DTO를 선언하여 데이터를 받아오고 싶지만 <span style="color:red">**resultType="Map"**</span> 처럼 사용해야 하는 경우가 존재한다.
 
 - 이 경우에는 mapUnderscoreToCamelCase 옵션이 true로 선언되어 있어도 emp_name를 받아올 경우, **key값이 empName이 아닌 emp_name이 된다.**
 
-## 반환타입이 Map일 때, mapUnderscoreToCamelCase가 적용되지 않는 이유
+
+### 반환타입이 Map일 때, mapUnderscoreToCamelCase가 적용되지 않는 이유
 
 - 단순 SELECT 쿼리를 디버깅하여 따라갈 경우, 객체에 대한 접근과 수정 기능을 제공하는 클래스인 **MetaObject**와 MetaObejct 생성자 내에서 실제 반환 타입에 전달될 값이 저장된 **originalObject**, originalObject와 반환객체의 매핑을 수행하는 **Wrapper**클래스를 확인할 수 있다.
     ```java
@@ -91,16 +93,19 @@ tags: [Spring Boot]
     }
     ```
 
-# 반환타입이 Map일 때, camelcase 적용하기
+
+## 반환타입이 Map일 때, camelcase 적용하기
 
 - 따라서, **resultType=Map**일 때 자동으로 카멜 케이스로 변환하기 위해선 별도의 설정이 필요하다.
 
 - 아래는 커스텀 Wrapper 구현 및 적용하여 해당 문제를 해결하는 방법이다.
  
-## 커스텀 Wrapper 구현 및 적용
+
+### 커스텀 Wrapper 구현 및 적용
 
 1. Custom MapWrapper 구현
     - MapWrapper를 상속받아 키를 camelCase로 변환하는 로직을 추가한다.
+    
     ```java
     import org.apache.ibatis.reflection.MetaObject;
     import org.apache.ibatis.reflection.wrapper.MapWrapper;
@@ -138,6 +143,7 @@ tags: [Spring Boot]
 
 2. Custom ObjectWrapperFactory 구현
     - MyBatis에서 기본 Wrapper 대신 커스텀 Wrapper를 사용할 수 있도록 설정하기 위한 CustomObjectWrapperFactory을 구현한다.
+
     ```java
     import org.apache.ibatis.reflection.MetaObject;
     import org.apache.ibatis.reflection.factory.ObjectFactory;
@@ -164,6 +170,7 @@ tags: [Spring Boot]
 
 3. MyBatis Configuration에 CustomObjectWrapperFactory 등록
     - mybatis-config.xml에 CustomObjectWrapperFactory를 등록한다.
+
     ```java
     ...
     <configuration>

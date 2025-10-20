@@ -1,6 +1,6 @@
 ---
-title: Mybatis의 resultType = Map의 camelcase 적용 
-date: 2024-06-04 19:30:00 +09:00
+title: MSA 프로젝트 진행을 위한 Spring Cloud 정리
+date: 2025-06-04 19:30:00 +09:00
 published: true
 toc_sticky: true
 categories: [MSA]

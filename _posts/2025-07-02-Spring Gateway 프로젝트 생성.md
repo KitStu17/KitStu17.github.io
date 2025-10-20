@@ -9,7 +9,7 @@ tags: [Spring WebFlux, Reactive]
 
 ## 프로젝트 생성하기
 
-Spring Cloud Gateway 프로젝트를 생성하기 위해 [Spring Initializr](https://start.spring.io/)에서 다음과 같이 설정ㅏ였습니다.:
+Spring Cloud Gateway 프로젝트를 생성하기 위해 [Spring Initializr](https://start.spring.io/)에서 다음과 같이 설정하였습니다.:
 
 **프로젝트 메타데이터**
 - Project: `Gradle - Groovy`

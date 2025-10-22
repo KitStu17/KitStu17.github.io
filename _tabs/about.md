@@ -236,10 +236,40 @@ order: 4
 
 ## Projects
 
-{% linkpreview "{{ site.url }}/posts/BUSS-프로젝트-정리/" %}
+<div class="projects-grid">
+  <div class="project-card" onclick="location.href='{{ site.baseurl }}/posts/BUSS-프로젝트-정리/'" style="cursor: pointer;">
+    <img src="/assets/img/buss/project_main.png" alt="BUSS" class="project-thumbnail">
+    <div class="project-content">
+      <h3>[BUSS] 버스 정보 안내 및 활용방법 제시 어플리케이션</h3>
+      <span class="project-tag">팀 프로젝트</span>
+      <p>2022년 10월 3일 → 2022년 12월 5일</p>
+    </div>
+  </div>
 
-{% linkpreview "{{ site.url }}/posts/ABTwin-프로젝트-정리/" %}
+  <div class="project-card" onclick="location.href='{{ site.baseurl }}/posts/ABTwin-프로젝트-정리/'" style="cursor: pointer;">
+    <img src="/assets/img/abtwin/project_main.png" alt="ABTwin" class="project-thumbnail">
+    <div class="project-content">
+      <h3>[ABTwin] 밸런스게임 어플리케이션</h3>
+      <span class="project-tag">팀 프로젝트</span>
+      <p>2022년 3월 2일 → 2023년 6월 17일</p>
+    </div>
+  </div>
 
-{% linkpreview "{{ site.url }}/posts/Toys-프로젝트-정리/" %}
+  <div class="project-card" onclick="location.href='{{ site.baseurl }}/posts/Toys-프로젝트-정리/'" style="cursor: pointer;">
+    <img src="/assets/img/toys/project_main.png" alt="Toys" class="project-thumbnail">
+    <div class="project-content">
+      <h3>[Toys] 토이 프로젝트 인원 모집 사이트</h3>
+      <span class="project-tag">개인 프로젝트</span>
+      <p>2023년 10월 10일 → 2023년 10월 23일</p>
+    </div>
+  </div>
 
-{% linkpreview "{{ site.url }}/posts/플래시-프로젝트-정리/" %}
+  <div class="project-card" onclick="location.href='{{ site.baseurl }}/posts/플래시-프로젝트-정리/'" style="cursor: pointer;">
+    <img src="/assets/img/flash/project_main.png" alt="플래시" class="project-thumbnail">
+    <div class="project-content">
+      <h3>[플래시] 지자체 복지 안내 플랫폼</h3>
+      <span class="project-tag">팀 프로젝트</span>
+      <p>2023년 10월 25일 → 2023년 11월 27일</p>
+    </div>
+  </div>
+</div>

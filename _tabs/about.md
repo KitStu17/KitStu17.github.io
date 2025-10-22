@@ -50,16 +50,67 @@ order: 4
   margin: 2rem 0;
 }
 
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
 .project-card {
   border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  transition: box-shadow 0.3s;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: #f8f9fa;
 }
 
 .project-card:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.project-thumbnail {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.project-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-content h3 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+.project-content p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.5rem 0;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-thumbnail {
+    width: 100%;
+    height: 150px;
+  }
 }
 
 .project-tag {
@@ -75,6 +126,15 @@ order: 4
 
 # PORTFOLIO
 
+<div class="navigator">
+  <h3>Navigator</h3>
+  <ol>
+    <li><a href="#about-me">About Me</a></li>
+    <li><a href="#stacks">Stacks</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ol>
+</div>
+
 ## About Me
 
 <div class="profile-section">
@@ -82,7 +142,7 @@ order: 4
     <img src="/assets/img/profile.jpg" alt="Profile" class="profile-img">
     <h3>Park Jonghyun</h3>
     <p style="text-align: left; font-size: 0.9rem; line-height: 1.6;">
-      Wonju, South Korea<br>
+      Seoul, Myeonmok-dong, South Korea<br>
       Tel. 010-5053-5474<br>
       E. kiri6077@naver.com
     </p>
@@ -100,6 +160,11 @@ order: 4
       <li>SQLD</li>
     </ul>
 
+    <h3 style="color: #1976d2; margin-top: 2rem;">Career</h3>
+    <ul>
+      <li>(주) 제이니스 기업부설연구소 - 박종현 연구원 (1년 4개월)</li>
+    </ul>
+
     <h3 style="color: #1976d2; margin-top: 2rem;">Education</h3>
     <ul>
       <li>금오공과대학교 컴퓨터공학과 2017.03 - 2024.02</li>
@@ -113,15 +178,6 @@ order: 4
       <li>SW전문인재양성 컨소시엄(장려상) 2023.12.06</li>
     </ul>
   </div>
-</div>
-
-<div class="navigator">
-  <h3>Navigator</h3>
-  <ol>
-    <li><a href="#about-me">About Me</a></li>
-    <li><a href="#stacks">Stacks</a></li>
-    <li><a href="#projects">Projects</a></li>
-  </ol>
 </div>
 
 ---
@@ -180,38 +236,10 @@ order: 4
 
 ## Projects
 
-<a href="{% post_url 2024-02-15-BUSS 프로젝트 정리 %}" style="text-decoration: none; color: inherit;">
-  <div class="project-card">
-    <h3>[BUSS] 버스 정보 안내 및 활용방법 제시 어플리케이션</h3>
-    <p><strong>작업기간:</strong> 2022년 10월 3일 → 2022년 12월 5일</p>
-    <p><strong>기여도:</strong> 40%</p>
-    <span class="project-tag">팀 프로젝트</span>
-  </div>
-</a>
+{% linkpreview "{{ site.url }}/posts/BUSS-프로젝트-정리/" %}
 
-<a href="{% post_url 2024-02-14-ABTwin 프로젝트 정리 %}" style="text-decoration: none; color: inherit;">
-  <div class="project-card">
-    <h3>[ABTwin] 밸런스게임 어플리케이션</h3>
-    <p><strong>작업기간:</strong> 2022년 3월 2일 → 2023년 6월 17일</p>
-    <p><strong>기여도:</strong> 40%</p>
-    <span class="project-tag">팀 프로젝트</span>
-  </div>
-</a>
+{% linkpreview "{{ site.url }}/posts/ABTwin-프로젝트-정리/" %}
 
-<a href="{% post_url 2024-02-15-Toys 프로젝트 정리 %}" style="text-decoration: none; color: inherit;">
-  <div class="project-card">
-    <h3>[Toys] 토이 프로젝트 인원 모집 사이트</h3>
-    <p><strong>작업기간:</strong> 2023년 10월 10일 → 2023년 10월 23일</p>
-    <p><strong>기여도:</strong> 100%</p>
-    <span class="project-tag">개인 프로젝트</span>
-  </div>
-</a>
+{% linkpreview "{{ site.url }}/posts/Toys-프로젝트-정리/" %}
 
-<a href="{% post_url 2024-02-16-플래시 프로젝트 정리 %}" style="text-decoration: none; color: inherit;">
-  <div class="project-card">
-    <h3>[플래시] 지자체 복지 안내 플랫폼</h3>
-    <p><strong>작업기간:</strong> 2023년 10월 25일 → 2023년 11월 27일</p>
-    <p><strong>기여도:</strong> 25%</p>
-    <span class="project-tag">팀 프로젝트</span>
-  </div>
-</a>
+{% linkpreview "{{ site.url }}/posts/플래시-프로젝트-정리/" %}

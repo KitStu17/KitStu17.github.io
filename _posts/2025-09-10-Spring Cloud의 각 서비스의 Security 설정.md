@@ -297,14 +297,9 @@ sequenceDiagram
 
 ## 5. 참고 자료
 
-### 5.1 Spring Security 공식 문서
-
 - [Spring Security Reference - WebFlux Security](https://docs.spring.io/spring-security/reference/reactive/index.html)
 - [Reactive Applications - Security](https://docs.spring.io/spring-security/reference/reactive/getting-started.html)
 - [ReactiveSecurityContextHolder API](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/core/context/ReactiveSecurityContextHolder.html)
-
-### 5.2 Spring Cloud Gateway
-
 - [Spring Cloud Gateway Documentation](https://docs.spring.io/spring-cloud-gateway/reference/index.html)
 - [Global Filters](https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/global-filters.html)
 - [GatewayFilter Factories](https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/gatewayfilter-factories.html)

@@ -122,6 +122,72 @@ order: 4
   font-size: 0.875rem;
   margin-top: 0.5rem;
 }
+
+.experience-container,
+.skills-container {
+  display: flex;
+  gap: 3rem;
+  margin: 2rem 0;
+  padding: 2rem 0;
+}
+
+.experience-left,
+.skills-left {
+  flex: 0 0 250px;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.experience-left h3,
+.skills-left h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.experience-left a,
+.skills-left a {
+  color: #1976d2;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.experience-left p,
+.skills-left p {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.experience-right,
+.skills-right {
+  flex: 1;
+  padding-top: 0.5rem;
+}
+
+.experience-right ul,
+.skills-right ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.experience-right li,
+.skills-right li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .experience-container,
+  .skills-container {
+    flex-direction: column;
+  }
+
+  .experience-left,
+  .skills-left {
+    flex: 1;
+  }
+}
 </style>
 
 # PORTFOLIO
@@ -130,6 +196,8 @@ order: 4
   <h3>Navigator</h3>
   <ol>
     <li><a href="#about-me">About Me</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#stacks">Stacks</a></li>
     <li><a href="#projects">Projects</a></li>
   </ol>
@@ -182,6 +250,46 @@ order: 4
 
 ---
 
+## Experience
+
+<div class="experience-container">
+  <div class="experience-left">
+    <h3>(주)제이니스</h3>
+    <a href="http://www.jness.co.kr/" target="_blank">http://www.jness.co.kr/</a>
+    <p>웹 개발자</p>
+    <p>2024.06.17 ~ 2025.09.30</p>
+  </div>
+  <div class="experience-right">
+    <p style="font-style: italic; color: #666; margin-bottom: 1.5rem;">PC-OFF 시장 점유율 1위의 중소기업</p>
+    <ul>
+      <li>PostgreSQL 성능 튜닝 및 장애 대응</li>
+      <li>레거시 Spring 프로젝트를 Spring Boot 기반으로 전환</li>
+      <li>정기결제 스케줄링 시스템 개선</li>
+      <li>신규 서비스 PineWorks의 구독 관리, 결제, 환불 등 핵심 비즈니스 로직 개선</li>
+    </ul>
+  </div>
+</div>
+
+---
+
+## Skills
+
+### 레거시 프로젝트 리펙토링
+- MOffice 프로젝트 마이그레이션(Legacy Spring Framework -> Spring Boot)
+- 사내 통합 포탈 사이트 마이그레이션(JSP -> Spring Cloud, Spring WebFlux)
+
+### 대용량 데이터 처리 및 성능 개선
+- PineWorks 프로젝트 내 PostgreSQL SlowQuery 튜닝
+- 계약사 100건 이상의 사용자 개인정보 접근 로그 시스템 개발
+- JDBC/PostgreSQL 성능 개선
+
+### 보안 중심 아키텍처 설계
+- 보안 취약점 진단 및 대응을 통한 코드 레벨 보안 강화
+- Spring Security SSO 통합 인증 시스템 개발
+- Spring Cloud Gateway 기반 API 라우팅 구조 설계
+
+---
+
 ## Stacks
 
 <div class="stacks-grid">
@@ -190,9 +298,11 @@ order: 4
     <ul>
       <li>Java / Spring</li>
       <li>Spring boot</li>
+      <li>Spring MVC / WebFlux</li>
       <li>NodeJS</li>
-      <li>Spring JPA</li>
+      <li>Spring JDBC</li>
       <li>Mybatis</li>
+      <li>Gradle</li>
     </ul>
   </div>
 
@@ -202,13 +312,13 @@ order: 4
       <li>IntelliJ</li>
       <li>VSCode</li>
       <li>Eclipse</li>
-      <li>Android Studio</li>
     </ul>
   </div>
 
   <div>
     <h3>DB/Cache</h3>
     <ul>
+      <li>PostgreSQL</li>
       <li>MySQL</li>
       <li>Maria DB</li>
       <li>Firebase</li>

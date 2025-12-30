@@ -3,6 +3,7 @@ title: PriceWatch - Spring WebFlux 기반 인증 시스템 구현기
 date: 2025-12-30 09:00:00 +09:00
 published: true
 toc_sticky: true
+mermaid: true
 categories: [사이드 프로젝트, PriceWatch]
 tags: [Spring Boot, WebFlux, R2DBC, PostgreSQL, JWT, Argon2]
 ---
@@ -281,6 +282,7 @@ WebFlux 환경에서 리액티브 데이터베이스 드라이버로 R2DBC를 �
 2. **BouncyCastle** (순수 Java)
 
 **비교**:
+
 | 항목 | argon2-jvm | BouncyCastle |
 |------|-----------|--------------|
 | 성능 | 빠름 (2~3배) | 느림 |
